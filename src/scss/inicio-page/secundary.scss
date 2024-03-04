@@ -1,0 +1,35 @@
+.secundary-section {
+   min-height: 100vh;
+   width: 100%;
+   padding-left: 10px;
+
+   .title-secundary {
+      margin-bottom: 20px; 
+      padding-left: 20px;
+
+      h2 {
+         font-size: 36px;
+      }
+   }
+
+   .content-secundary {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 20px;
+
+      
+      .movie-container {
+      width: 240px;
+
+      img {
+         width: 95%;
+         height: auto;
+         margin-bottom: 5px;
+      }
+   }
+   }
+
+}

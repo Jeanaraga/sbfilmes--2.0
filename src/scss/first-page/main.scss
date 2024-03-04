@@ -1,0 +1,84 @@
+main {
+   height: 100vh;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   background-image: url('../../img/bg-img.jpg');
+   background-size: cover; // Isso faz com que a imagem cubra todo o elemento de fundo
+   background-position: center; // Isso centraliza a imagem no elemento de fundo
+   background-repeat: no-repeat; // Isso evita que a imagem se repita
+   
+
+   .container-login-action {
+      height: 90vh;
+      width: 100%;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+
+      h2 {
+         font-size: 32px;
+         margin-bottom: 5px;
+      }
+
+      p {
+         font-size: 14px;
+         width: 70%;
+         margin-bottom: 20px;
+      }
+
+      .input-box {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-wrap: wrap;
+         gap: 5px;
+
+         button {
+            font-size: 16px;
+            color: #fff;
+            padding: 9px 20px;
+            background: #000;
+            border: 1px solid #fff;
+            cursor: pointer;
+            transition: all 0.5s ease;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+
+            &:hover {
+               background-color: #3b0063;
+               border: none;
+            }
+         }
+
+         .input-field {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            border: 1px solid #fff;
+            background-color: #0000004f;
+            padding: 5px 10px;
+            color: #ffffff;
+
+            input {
+               background: transparent;
+               border: none;
+               font-size: 14px;
+               padding: 5px;
+               color: #fff;
+
+               &:focus-visible {
+                  outline: none;
+               }
+            }
+         }
+      }
+   }
+}
