@@ -1,0 +1,60 @@
+.secundary-section {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  padding: 40px;
+}
+.secundary-section .form-container {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 10px;
+  width: 800px;
+  max-width: 90vw;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgba(26, 26, 26, 0.3);
+}
+.secundary-section .form-container .input-field {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 60%;
+}
+.secundary-section .form-container .input-field label {
+  font-size: 20px;
+}
+.secundary-section .form-container .input-field input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #4c0094;
+  width: 100px;
+  border-radius: 4px;
+  font-weight: bold;
+  color: gold;
+}
+.secundary-section .form-container .input-field textarea {
+  width: 100%;
+  max-height: 200px;
+  padding: 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+.secundary-section .form-container button {
+  font-size: 18px;
+  background-color: #3b0063;
+  padding: 5px 20px;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.secundary-section .form-container button:hover {
+  padding-right: 40px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.3);
+}
+
+/*# sourceMappingURL=filmeDetalhe.css.map */

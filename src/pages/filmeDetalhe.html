@@ -8,7 +8,8 @@
       crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="../css/inicio.css">
    <link rel="stylesheet" href="../css/sidebar.css">
-   <title>SB Filmes - Início</title>
+   <link rel="stylesheet" href="../css/filmeDetalhe.css">
+   <title>SB Filmes - Detalhe do Filme</title>
 </head>
 <body>
    <nav id="sidebar">
@@ -102,53 +103,23 @@
 
             </div>
          </div>
+         
       </section>
 
       <section class="secundary-section">
-
-         <div class="title-secundary">
-            <h2><i class="fa-solid fa-fire" style="color: red;"></i> Top 8 Filmes mais curtidos</h2>
-         </div>
-
-         <div class="content-secundary">
-            <!-- Aqui vai ser onde os filmes mais curtidos vao estar -->
-            <div class="movie-container">
-
-
-               <img src="https://m.media-amazon.com/images/I/81kz06oSUeL._AC_SL1500_.jpg" alt="" class="img-movie">
-
-
-               <form class="action-box" >
-                  <button class="like-btn"> 
-                     <i class="fa-regular fa-heart"></i>
-                  </button>
-                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
-               </form>
+         <form class="form-container" action="#" method="post">
+            <div class="input-field">
+               <label for="avaliacao">Avaliar de 1 a 5</label>
+               <input type="number" name="avaliacao" min="1" max="5" required>
             </div>
-      
-         </div>
+            <div class="input-field">
+               <label for="comentario">Comentar</label>
+               <textarea name="comentario"  cols="30" rows="5"></textarea>
+            </div>
+            <button type="submit">Enviar</button>
+         </form>
       </section>
 
-      <section class="secundary-section">
-
-         <div class="title-secundary">
-            <h2><i class="fa-solid fa-circle-down" style="color: blue;"></i> Ultimos filmes adcionados</h2>
-         </div>
-
-         <div class="content-secundary">
-            <!-- Aqui vai ser onde os filmes mais curtidos vao estar -->
-            <div class="movie-container">
-               <img src="https://m.media-amazon.com/images/I/81kz06oSUeL._AC_SL1500_.jpg" alt="" class="img-movie">
-               <form class="action-box">
-                  <button class="like-btn"> 
-                     <i class="fa-regular fa-heart"></i>
-                  </button>
-                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
-               </form>
-            </div>
-      
-         </div>
-      </section>
     </main>
 
    <!-- Modal -->
