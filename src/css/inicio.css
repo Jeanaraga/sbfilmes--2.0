@@ -74,7 +74,12 @@
 }
 .secundary-section .title-secundary {
   margin-bottom: 20px;
+  padding: 10px;
   padding-left: 20px;
+  width: 100%;
+  background-color: rgba(15, 15, 15, 0.6156862745);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  text-align: start;
 }
 .secundary-section .title-secundary h2 {
   font-size: 36px;

@@ -16,7 +16,7 @@
    <main>
       <header>
          <div class="logo-caixa">
-            <h1>Logo</h1>
+            <img src="./src/img/logosb.png" alt="">
          </div>
          <div class="btn-cadastro">
             <span>Não tem um Login?</span>
@@ -24,33 +24,47 @@
          </div>
       </header>
       <div class="container-login-action">
-         <h2 class="titulo-login-action">Entre e explore no SB Filmes!</h2>
-         <p class="description-login-action">Desbrave a Sétima Arte - Faça Login para Embarcar nessa Jornada!</p>
-         <form action="" method="post" class="input-box">
-            <div class="input-field">
-               <i class="fa-solid fa-envelope"></i>
-               <input type="email" name="email" id="email" placeholder="seuemail@email.com">
-            </div>
-            <div class="input-field">
-               <i class="fa-solid fa-lock"></i>
-               <input type="password" name="senha" id="senha" placeholder="suasenha">
-            </div>
-            <button type="submit">Entrar</button>
-         </form>
+         <div class="form-wrapper">
+            <h2>Login</h2>
+            <form action="#" method="post">
+                <div class="form-control">
+                    <input type="text" required>
+                    <label>Email ou número de telefone</label>
+                </div>
+                <div class="form-control">
+                    <input type="password" required>
+                    <label>Senha</label>
+                </div>
+                <button type="submit">Entrar</button>
+                <div class="form-help">
+                   <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me">Me lembrar</label>
+                   </div>
+                   <a href="#">Precisa de ajuda?</a>
+                </div>
+            </form>
+            <!-- <p>Novo no SB filmes? <a href="#">Se inscreva agora</a></p>
+            <small>
+               Esta página é protegida pelo Google reCAPTCHA para garantir que você não é um robô.
+               <a href="#">Saiba mais</a>
+            </small> -->
+        </div>
       </div>
    </main>
+   
    <section class="info-container">
       <div class="img">
          <img src="./src/img/bg-main-removebg-preview.png" alt="">
       </div>
       <div class="text-container">
          <h3>Aqui colocar uma caracteristica/qualidade do Site</h3>
-         <p>Ai aqui coloca a descrição desta caracteristica. Não esquece de Mudar a imagem ao lado!</p>
+         <p>Desfrute de uma ampla variedade de filmes, cobrindo todos os gêneros e épocas, em uma biblioteca cinematográfica vasta e envolvente.</p>
       </div>
    </section>
    <section class="gallery">
       <div class="text-container">
-         <h3>Os melhores filmes para voçê ver,avaliar e comentar!</h3>
+         <h3>Os melhores filmes para você ver,avaliar e comentar!</h3>
          <p>Descubra novos filmes e histórias que vão fazer parte do seu dia a dia!</p>
       </div>
       <div class="gallery-container">
@@ -71,50 +85,66 @@
       <div class="faq-container" id="container-faq">
          <div class="accordion">
             <button class="accordion-header">
-               <span>Primeira pergunta</span>
+               <span>É possível fazer o download de filmes para assistir offline?</span>
                <i class="fa-solid fa-chevron-down arrow"></i>
             </button>
             <div class="accordion-body">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptate quisquam accusamus hic
-                  veniam a, ex doloremque adipisci blanditiis odit quo ratione similique, id nobis laudantium? Pariatur
-                  quod quaerat ad!</p>
+               <p>Essa função infelizmente não esta disponivel no momento, talvez em atualizações futuras essa função seja adicionada :-)</p>
             </div>
          </div>
          <div class="accordion">
             <button class="accordion-header">
-               <span>Segunda pergunta</span>
+               <span>Como faço para assistir a filmes online no site?</span>
                <i class="fa-solid fa-chevron-down arrow"></i>
             </button>
             <div class="accordion-body">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptate quisquam accusamus hic
-                  veniam a, ex doloremque adipisci blanditiis odit quo ratione similique, id nobis laudantium? Pariatur
-                  quod quaerat ad!</p>
+               <p>Basta acessar a página do filme desejado e clicar em "Reproduzir" para streaming direto ou verificar opções de download ou aluguel.</p>
             </div>
          </div>
          <div class="accordion">
             <button class="accordion-header">
-               <span>Terceira pergunta</span>
+               <span>Onde encontro informações sobre classificação indicativa e conteúdo dos filmes?</span>
                <i class="fa-solid fa-chevron-down arrow"></i>
             </button>
             <div class="accordion-body">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptate quisquam accusamus hic
-                  veniam a, ex doloremque adipisci blanditiis odit quo ratione similique, id nobis laudantium? Pariatur
-                  quod quaerat ad!</p>
+               <p>Detalhes sobre classificação e conteúdo estão disponíveis na página de cada filme, ajudando na escolha informada.</p>
             </div>
          </div>
          <div class="accordion">
             <button class="accordion-header">
-               <span>Quarta pergunta</span>
+               <span>Quais são os filmes mais recentes adicionados?</span>
                <i class="fa-solid fa-chevron-down arrow"></i>
             </button>
             <div class="accordion-body">
-               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio voluptate quisquam accusamus hic
-                  veniam a, ex doloremque adipisci blanditiis odit quo ratione similique, id nobis laudantium? Pariatur
-                  quod quaerat ad!</p>
+               <p>Confira a seção "Novidades" em nossa página inicial para ver os últimos filmes incluídos em nossa biblioteca.</p>
             </div>
          </div>
       </div>
    </section>
+
+   <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Siga-nos</h3>
+        </div>
+        <div class="footer-section">
+          <h3>Suporte ao Cliente</h3>
+          <p>(37)4002-8922</p>
+        </div>
+        <div class="footer-section">
+          <h3>Política de Privacidade</h3>
+        </div>
+        <div class="footer-section">
+          <h3>Sobre Nós</h3>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 SBfilmes. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  
+  </body>
+  </html>
 
    <script src="./src/js/accordion.js"></script>
 </body>

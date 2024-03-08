@@ -8,7 +8,6 @@
       crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="../css/inicio.css">
    <link rel="stylesheet" href="../css/sidebar.css">
-   <link rel="stylesheet" href="../css/modal.css">
    <title>SB Filmes - Início</title>
 </head>
 <body>
@@ -29,7 +28,7 @@
             </a>
           </li>
           <li class="side-item">
-            <a href="">
+            <a href="./filmes.html">
                <i class="fa-solid fa-film"></i>
                <span class="item-description">Filmes</span>
             </a>
@@ -40,20 +39,15 @@
               <span class="item-description">Curtidos</span>
             </a>
           </li>
+          
           <li class="side-item">
-            <a href="">
-               <i class="fa-solid fa-magnifying-glass"></i>
-               <span class="item-description">Buscar</span>
-            </a>
-          </li>
-          <li class="side-item">
-            <a href="">
+            <a href="./ajuda.html">
                <i class="fa-solid fa-circle-question"></i>
               <span class="item-description">Ajuda</span>
             </a>
           </li>
           <li class="side-item">
-            <a href="">
+            <a href="./usuario.html">
                <i class="fa-solid fa-user"></i>
               <span class="item-description">Ver Perfil</span>
             </a>
@@ -103,7 +97,7 @@
                   <button class="like-btn"> 
                      <i class="fa-regular fa-heart"></i>
                   </button>
-                  <button class="coment-btn"><i class="fa-solid fa-comment"></i>Comentar</button>
+                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
                </form>
 
             </div>
@@ -113,7 +107,7 @@
       <section class="secundary-section">
 
          <div class="title-secundary">
-            <h2>Top 8 Filmes mais curtidos</h2>
+            <h2><i class="fa-solid fa-fire" style="color: red;"></i> Top 8 Filmes mais curtidos</h2>
          </div>
 
          <div class="content-secundary">
@@ -124,7 +118,7 @@
                   <button class="like-btn"> 
                      <i class="fa-regular fa-heart"></i>
                   </button>
-                  <button class="coment-btn"><i class="fa-solid fa-comment"></i>Comentar</button>
+                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
                </form>
             </div>
       
@@ -134,7 +128,7 @@
       <section class="secundary-section">
 
          <div class="title-secundary">
-            <h2>Ultimos filmes adcionados</h2>
+            <h2><i class="fa-solid fa-circle-down" style="color: blue;"></i> Ultimos filmes adcionados</h2>
          </div>
 
          <div class="content-secundary">
@@ -145,7 +139,7 @@
                   <button class="like-btn"> 
                      <i class="fa-regular fa-heart"></i>
                   </button>
-                  <button class="coment-btn"><i class="fa-solid fa-comment"></i>Comentar</button>
+                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
                </form>
             </div>
       
@@ -154,47 +148,8 @@
     </main>
 
    <!-- Modal -->
-   <div id="modal" class="modal">
-      <div class="modal-content">
 
-         <div class="modal-header">
-            <h2 class="modal-title">Detalhes do Filme</h2>
-            <span class="close">&times;</span>
-         </div>
 
-         <div class="modal-body">
-            <!-- Informações do Filme -->
-            <div id="modal-info" class="modal-info">
-               <img src="https://m.media-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg" alt="">
-               <div id="modal-infos" class="infos-movie-main">
-                  <h3 id="modal-title"> Titulo do Filme</h3>
-                  <ul>
-                     <li id="modal-year">Ano de Lançamento: 0000</li>
-                     <li id="modal-director">Diretor: Fulano de Tal</li>
-                     <li id="modal-duration">Duração: 00:00</li>
-                  </ul>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam nulla unde voluptatum beatae voluptas, in repudiandae velit consectetur, maxime culpa quibusdam recusandae necessitatibus rem quasi temporibus, officiis sapiente sit? Amet.</p>
-               </div>
-            </div>
-            <!-- Avaliação e Comentários -->
-            <div class="modal-action">
-               <form class="action-box" id="modal-form">
-                  <div class="input-field">
-                     <label for="rating">Avaliação (1-5): </label>
-                     <input type="number" id="rating" name="rating" min="1" max="5" required>
-                  </div>
-                  <div class="input-field">
-                     <label for="comment">Comentário: </label>
-                     <textarea id="comment" name="comment" rows="4" required></textarea>
-                  </div>
-                  <button type="submit" class="submit-btn">Avaliar e Comentar</button>
-               </form>
-            </div>
-         </div>
-      </div>
-   </div>
- 
-    <script src="../js/modal.js"></script>
     <script src="../js/sidebar.js"></script>
 </body>
 </html>
