@@ -28,7 +28,7 @@
             </a>
           </li>
           <li class="side-item">
-            <a href="./filmes.html">
+            <a href="./filmes.php">
                <i class="fa-solid fa-film"></i>
                <span class="item-description">Filmes</span>
             </a>

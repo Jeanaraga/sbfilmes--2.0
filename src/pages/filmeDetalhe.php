@@ -23,13 +23,13 @@
         </div>
         <ul id="side_items">
           <li class="side-item active">
-            <a href="./inicio.html">
+            <a href="./inicio.php">
                <i class="fa-solid fa-house"></i>
               <span class="item-description">Inicio</span>
             </a>
           </li>
           <li class="side-item">
-            <a href="./filmes.html">
+            <a href="./filmes.php">
                <i class="fa-solid fa-film"></i>
                <span class="item-description">Filmes</span>
             </a>
