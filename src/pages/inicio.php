@@ -22,7 +22,7 @@
         </div>
         <ul id="side_items">
           <li class="side-item active">
-            <a href="./inicio.html">
+            <a href="./inicio.php">
                <i class="fa-solid fa-house"></i>
               <span class="item-description">Inicio</span>
             </a>
@@ -94,10 +94,10 @@
                </p>
 
                <form class="action-box">
-                  <button class="like-btn"> 
+                  <button class="like-btn" type="button"> 
                      <i class="fa-regular fa-heart"></i>
                   </button>
-                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
+                  <button class="coment-btn" type="submit"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
                </form>
 
             </div>
@@ -114,15 +114,18 @@
             <!-- Aqui vai ser onde os filmes mais curtidos vao estar -->
             <div class="movie-container">
 
-
+               <!-- Aqui coloca apenas a imagem que tiver no BD -->
                <img src="https://m.media-amazon.com/images/I/81kz06oSUeL._AC_SL1500_.jpg" alt="" class="img-movie">
 
 
                <form class="action-box" >
-                  <button class="like-btn"> 
+                  <!-- Aqui é o  botão de curtir,tem que ser relacionado com o id do usuario e do filme -->
+                  <button class="like-btn" type="button"> 
                      <i class="fa-regular fa-heart"></i>
                   </button>
-                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
+
+                  <!-- Aqui o btn de Ver mais, ai tem que ser redirecionado a pagina filmeDetalhe, acho que tem que pegar o id do filme e enviar pra pagina que vai ser redirecionada -->
+                  <button class="coment-btn" type="submit"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
                </form>
             </div>
       
@@ -138,12 +141,20 @@
          <div class="content-secundary">
             <!-- Aqui vai ser onde os filmes mais curtidos vao estar -->
             <div class="movie-container">
+
+               <!-- Aqui coloca apenas a imagem que tiver no BD -->
                <img src="https://m.media-amazon.com/images/I/81kz06oSUeL._AC_SL1500_.jpg" alt="" class="img-movie">
+
+
                <form class="action-box">
-                  <button class="like-btn"> 
+
+                  <!-- Aqui é o  botão de curtir,tem que ser relacionado com o id do usuario e do filme -->
+                  <button class="like-btn" type="button"> 
                      <i class="fa-regular fa-heart"></i>
                   </button>
-                  <button class="coment-btn"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
+
+                  <!-- Aqui o btn de Ver mais, ai tem que ser redirecionado a pagina filmeDetalhe, acho que tem que pegar o id do filme e enviar pra pagina que vai ser redirecionada -->
+                  <button class="coment-btn" type="submit"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
                </form>
             </div>
       
@@ -151,9 +162,8 @@
       </section>
     </main>
 
-   <!-- Modal -->
 
-
+    <script src="../js/like.js"></script>
     <script src="../js/sidebar.js"></script>
 </body>
 </html>
