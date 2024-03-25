@@ -82,6 +82,7 @@ main {
   background-repeat: no-repeat;
 }
 main .container-login-action {
+  min-height: 85vh;
   height: 85vh;
   width: 100%;
   padding: 0 20px;
@@ -91,7 +92,7 @@ main .container-login-action {
   justify-content: center;
 }
 main .container-login-action .form-wrapper {
-  max-height: 80%;
+  max-height: 95%;
   width: 430px;
   padding: 20px 60px;
   border-radius: 4px;
@@ -198,6 +199,7 @@ main .container-login-action .form-wrapper a:hover {
   gap: 2rem;
   flex-wrap: wrap-reverse;
   border-top: 2px solid rgb(56, 56, 56);
+  border-bottom: 2px solid rgb(56, 56, 56);
 }
 .info-container .img {
   width: 400px;
@@ -296,7 +298,7 @@ main .container-login-action .form-wrapper a:hover {
   max-width: 95vw;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 1rem;
   margin-bottom: 20px;
 }
 .faq .faq-container .accordion {
@@ -343,6 +345,8 @@ main .container-login-action .form-wrapper a:hover {
 .faq .faq-container .accordion:has(:active) .arrow {
   rotate: -180deg;
 }
+
+
 footer {
   background: #444;
   color: #fff;
@@ -373,5 +377,6 @@ footer {
   margin: 0;
   font-size: 0.8em;
 }
+
 
 /*# sourceMappingURL=style.css.map */

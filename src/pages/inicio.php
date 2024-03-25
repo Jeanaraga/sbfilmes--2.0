@@ -1,105 +1,196 @@
+<?php
+require_once("conexao.php");
+
+
+session_start();
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['user_id'])) {
+    // Se não estiver logado, redireciona para a página de login
+    header("Location: index.php");
+    exit;
+}
+
+// Função para lidar com a ação de curtir um filme
+function likeMovie($pdo, $user_id, $movie_id)
+{
+    // Verifica se o usuário já curtiu este filme antes
+    $query = $pdo->prepare("SELECT * FROM filmes_curtidos WHERE user_id = ? AND movie_id = ?");
+    $query->execute([$user_id, $movie_id]);
+    $result = $query->fetch();
+
+    if ($result) {
+        // Se o usuário já curtiu o filme, retorna uma mensagem de erro
+       
+    } else {
+        // Se o usuário ainda não curtiu o filme, insere um novo registro na tabela de filmes curtidos
+        $insert_query = $pdo->prepare("INSERT INTO filmes_curtidos (user_id, movie_id) VALUES (?, ?)");
+        $insert_query->execute([$user_id, $movie_id]);
+
+        // Atualizar a contagem de curtidas na tabela filmes
+        $update_query = $pdo->prepare("UPDATE filmes SET curtidas = curtidas + 1 WHERE movie_id = ?");
+        $update_query->execute([$movie_id]);
+        
+        header("Location: inicio.php");
+    }
+}
+
+// Verifica se a requisição é do tipo POST e se o ID do filme foi enviado
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['movie_id'])) {
+    // Obtém o ID do filme e o ID do usuário da sessão
+    $movie_id = $_POST['movie_id'];
+    $user_id = $_SESSION['user_id'];
+
+    // Lida com a ação de curtir o filme
+    $like_message = likeMovie($pdo, $user_id, $movie_id);
+    echo $like_message;
+    exit;
+}
+
+// Consulta para selecionar todos os filmes ordenados por ordem alfabética do título
+$query = $pdo->query("SELECT * FROM filmes ORDER BY titulo ASC");
+$filmes = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+// Consulta para obter o nome do usuário com base no ID de usuário da sessão
+$user_query = $pdo->prepare("SELECT username, email, created_at, avatar_url FROM usuarios WHERE user_id = ?");
+$user_query->execute([$_SESSION['user_id']]);
+$user_result = $user_query->fetch();
+$username = $user_result['username'];
+$email = $user_result['email'];
+$created_at = $user_result['created_at'];
+$avatar_url = $user_result['avatar_url']; 
+
+
+// Buscar os últimos 8 filmes adicionados
+$query = $pdo->prepare("SELECT * FROM filmes ORDER BY movie_id DESC LIMIT 8");
+$query->execute();
+$filmes = $query->fetchAll(PDO::FETCH_ASSOC);
+
+// Buscar o último filme adicionado
+$queryUltimo = $pdo->prepare("SELECT * FROM filmes ORDER BY movie_id DESC LIMIT 1");
+$queryUltimo->execute();
+$ultimoFilme = $queryUltimo->fetch(PDO::FETCH_ASSOC);
+
+// Buscar os filmes mais curtidos (ordenados pelo número de curtidas em ordem decrescente)
+$query_top_filmes = $pdo->query("SELECT * FROM filmes ORDER BY curtidas DESC LIMIT 8");
+$top_filmes = $query_top_filmes->fetchAll(PDO::FETCH_ASSOC);
+
+?>
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
    <link rel="stylesheet" href="../css/inicio.css">
    <link rel="stylesheet" href="../css/sidebar.css">
    <title>SB Filmes - Início</title>
 </head>
+
 <body>
    <nav id="sidebar">
       <div id="sidebar_content">
-        <div id="user">
-          <img src="../img/avatar.png" alt="avatar" id="user_avatar"/>
-          <p id="user_infos">
-            <span class="item-description"> Fulano de Tal </span>
-            <span class="item-description"> De Coisa e Tal </span>
-          </p>
-        </div>
-        <ul id="side_items">
-          <li class="side-item active">
-            <a href="./inicio.php">
-               <i class="fa-solid fa-house"></i>
-              <span class="item-description">Inicio</span>
-            </a>
-          </li>
-          <li class="side-item">
-            <a href="./filmes.php">
-               <i class="fa-solid fa-film"></i>
-               <span class="item-description">Filmes</span>
-            </a>
-          </li>
-          <li class="side-item">
-            <a href="./curtidos.html">
-               <i class="fa-solid fa-heart"></i>
-              <span class="item-description">Curtidos</span>
-            </a>
-          </li>
-          
-          <li class="side-item">
-            <a href="./ajuda.html">
-               <i class="fa-solid fa-circle-question"></i>
-              <span class="item-description">Ajuda</span>
-            </a>
-          </li>
-          <li class="side-item">
-            <a href="./usuario.html">
-               <i class="fa-solid fa-user"></i>
-              <span class="item-description">Ver Perfil</span>
-            </a>
-          </li>
-        </ul>
-        <button id="open_btn">
-          <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
-        </button>
+         <div id="user">
+         <img src="<?= isset($avatar_url) ? $avatar_url : '../img/avatar.png' ?>" alt="avatar" id="user_avatar" />
+            <p id="user_infos">
+            <span class="item-description"><?php echo $username; ?></span>
+            <span class="item-description"><?php echo $email; ?></span>
+            </p>
+         </div>
+         <ul id="side_items">
+            <li class="side-item active">
+               <a href="./inicio.php">
+                  <i class="fa-solid fa-house"></i>
+                  <span class="item-description">Inicio</span>
+               </a>
+            </li>
+            <li class="side-item">
+               <a href="./filmes.php">
+                  <i class="fa-solid fa-film"></i>
+                  <span class="item-description">Filmes</span>
+               </a>
+            </li>
+            <li class="side-item">
+               <a href="./curtidos.php">
+                  <i class="fa-solid fa-heart"></i>
+                  <span class="item-description">Curtidos</span>
+               </a>
+            </li>
+
+            <li class="side-item">
+               <a href="./ajuda.php">
+                  <i class="fa-solid fa-circle-question"></i>
+                  <span class="item-description">Ajuda</span>
+               </a>
+            </li>
+            <li class="side-item">
+               <a href="./usuario.php">
+                  <i class="fa-solid fa-user"></i>
+                  <span class="item-description">Ver Perfil</span>
+               </a>
+            </li>
+         </ul>
+         <button id="open_btn">
+            <i class="fa-solid fa-chevron-right" id="open_btn_icon"></i>
+         </button>
       </div>
       <div id="logout">
-        <button id="logout_btn">
+         <a href="./index.php" id="logout_btn">
+            
             <i class="fa-solid fa-right-from-bracket"></i>
             <span class="item-description">Sair</span>
-        </button>
+         </a>
       </div>
-    </nav>
+   </nav>
 
-    <main>
+   <main>
       <section class="container-main">
 
          <div class="logo-container">
-            <h1>Logo</h1>
+            <img src="../img/logo.jpg" alt="">
          </div>
 
-         <!-- Aqui vai colocar as info do filme mais curtidos -->
+         <!-- Aqui vai colocar as info do último filme adicionado -->
          <div class="content-container">
-
             <div class="img-container">
-               <img src="https://m.media-amazon.com/images/I/81ai6zx6eXL._AC_SL1304_.jpg" alt="">
+               <img src="<?= $ultimoFilme['imagem'] ?>" alt="<?= $ultimoFilme['titulo'] ?>">
             </div>
 
             <div class="text-movie-container">
-
-               <h2 class="title-movie-main">Titulo do Filme</h2>
+               <h2 class="title-movie-main"><?= $ultimoFilme['titulo'] ?></h2>
 
                <ul class="infos-movie-main">
-                  <li>Ano de Lançamento: 0000</li>
-                  <li>Diretor: Fulano de Tal</li>
-                  <li>Duração: 00:00</li>
+                  <li>Ano de Lançamento: <?= $ultimoFilme['ano'] ?></li>
+                  <li>Diretor: <?= $ultimoFilme['diretor'] ?></li>
+                  <li>Duração: <?= $ultimoFilme['duracao'] ?></li>
                </ul>
 
                <p class="desc-movie-main">
-                  Ai eu teva pensando, nesta parte aqui ser o filme que tiver mais curtidas no banco de dados,ai só preencher as informações. Ai na parte de baixo vamo colocar uma setion para os top 10 filmes mais curtidos no banco e depois uma outra section com os 10 ultimos adcionados no banco de dados.
+                  <?= $ultimoFilme['descricao'] ?>
                </p>
 
                <form class="action-box">
-                  <button class="like-btn" type="button"> 
-                     <i class="fa-regular fa-heart"></i>
-                  </button>
-                  <button class="coment-btn" type="submit"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
+               <button class="like-btn" type="submit">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                  <a href="filmeDetalhe.php?id=<?= $ultimoFilme['movie_id'] ?>" class="coment-btn" type="button">
+                     <i class="fa-solid fa-location-arrow"></i>Ver Mais
+                  </a>
                </form>
-
             </div>
          </div>
       </section>
@@ -111,25 +202,22 @@
          </div>
 
          <div class="content-secundary">
-            <!-- Aqui vai ser onde os filmes mais curtidos vao estar -->
-            <div class="movie-container">
-
-               <!-- Aqui coloca apenas a imagem que tiver no BD -->
-               <img src="https://m.media-amazon.com/images/I/81kz06oSUeL._AC_SL1500_.jpg" alt="" class="img-movie">
-
-
-               <form class="action-box" >
-                  <!-- Aqui é o  botão de curtir,tem que ser relacionado com o id do usuario e do filme -->
-                  <button class="like-btn" type="button"> 
-                     <i class="fa-regular fa-heart"></i>
-                  </button>
-
-                  <!-- Aqui o btn de Ver mais, ai tem que ser redirecionado a pagina filmeDetalhe, acho que tem que pegar o id do filme e enviar pra pagina que vai ser redirecionada -->
-                  <button class="coment-btn" type="submit"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
-               </form>
-            </div>
-      
-         </div>
+    <?php foreach ($top_filmes as $filme) : ?>
+        <div class="movie-container">
+            <img src="<?= $filme['imagem'] ?>" alt="<?= $filme['titulo'] ?>" class="img-movie">
+            <form class="action-box">
+                <!-- Botão de curtir -->
+                <button class="like-btn" type="submit" data-movie-id="<?= $filme['movie_id'] ?>">
+                    <i class="fa-regular fa-heart"></i>
+                </button>
+                <!-- Botão de ver mais -->
+                <a href="filmeDetalhe.php?id=<?= $filme['movie_id'] ?>" class="coment-btn" type="button">
+                    <i class="fa-solid fa-location-arrow"></i>Ver Mais
+                </a>
+            </form>
+        </div>
+    <?php endforeach; ?>
+</div>
       </section>
 
       <section class="secundary-section">
@@ -139,31 +227,30 @@
          </div>
 
          <div class="content-secundary">
-            <!-- Aqui vai ser onde os filmes mais curtidos vao estar -->
-            <div class="movie-container">
 
-               <!-- Aqui coloca apenas a imagem que tiver no BD -->
-               <img src="https://m.media-amazon.com/images/I/81kz06oSUeL._AC_SL1500_.jpg" alt="" class="img-movie">
+            <?php foreach ($filmes as $filme) : ?>
+               <div class="movie-container">
+                  <img src="<?= $filme['imagem'] ?>" alt="<?= $filme['titulo'] ?>" class="img-movie">
+                  <form class="action-box">
+                     <button class="like-btn" type="submit" data-movie-id="<?= $filme['movie_id'] ?>">
+                        <i class="fa-regular fa-heart"></i>
+                     </button>
 
+                     <a href="filmeDetalhe.php?id=<?= $filme['movie_id'] ?>" class="coment-btn" type="button">
+                        <i class="fa-solid fa-location-arrow"></i>Ver Mais
+                     </a>
 
-               <form class="action-box">
-
-                  <!-- Aqui é o  botão de curtir,tem que ser relacionado com o id do usuario e do filme -->
-                  <button class="like-btn" type="button"> 
-                     <i class="fa-regular fa-heart"></i>
-                  </button>
-
-                  <!-- Aqui o btn de Ver mais, ai tem que ser redirecionado a pagina filmeDetalhe, acho que tem que pegar o id do filme e enviar pra pagina que vai ser redirecionada -->
-                  <button class="coment-btn" type="submit"><i class="fa-solid fa-location-arrow"></i>Ver Mais</button>
-               </form>
-            </div>
-      
+                  </form>
+               </div>
+            <?php endforeach; ?>
          </div>
       </section>
-    </main>
+   </main>
 
 
-    <script src="../js/like.js"></script>
-    <script src="../js/sidebar.js"></script>
+   <script src="../js/like.js"></script>
+   <script src="../js/sidebar.js"></script>
+   <script src="../js/curtir.js"></script>
 </body>
+
 </html>

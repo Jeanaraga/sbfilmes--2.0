@@ -2,10 +2,12 @@
 
 .action-box {
    display: flex;
-   align-items: center;
+   align-items: start;
    justify-content: start;
    padding-left: 5px;
    gap: 5px;
+   height: 20px;
+   border: 1px solid #fff;
 
    button {
       font-size: 16px;
