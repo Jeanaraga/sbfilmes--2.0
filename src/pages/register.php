@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt_insert_user->execute([$username, $password_hash, $email]);
 
             // Redirecionar para a página de login após o registro bem-sucedido
-            header("Location: index.php");
+            header("Location: ../../index.php");
             exit;
         }
     }

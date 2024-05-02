@@ -132,7 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES['img'])) {
       </button>
     </div>
     <div id="logout">
-      <a href="./index.php" id="logout_btn">
+      <a href="../../index.php" id="logout_btn">
         <i class="fa-solid fa-right-from-bracket"></i>
         <span class="item-description">Sair</span>
       </a>

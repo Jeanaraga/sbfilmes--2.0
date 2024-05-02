@@ -7,7 +7,7 @@ session_start();
 // Verifica se o usuário está logado
 if (!isset($_SESSION['user_id'])) {
     // Se não estiver logado, redireciona para a página de login
-    header("Location: index.php");
+    header("Location: ../../index.php");
     exit;
 }
 
@@ -149,7 +149,7 @@ $top_filmes = $query_top_filmes->fetchAll(PDO::FETCH_ASSOC);
          </button>
       </div>
       <div id="logout">
-         <a href="./index.php" id="logout_btn">
+         <a href="../../index.php" id="logout_btn">
             
             <i class="fa-solid fa-right-from-bracket"></i>
             <span class="item-description">Sair</span>

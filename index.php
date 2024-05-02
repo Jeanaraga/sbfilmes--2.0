@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['username'] = $user['username'];
 
         // Redirecionar para a página de início após o login bem-sucedido
-        header("Location: inicio.php");
+        header("Location: ./src/pages/inicio.php");
         exit;
     } else {
         echo "<script>alert('Credenciais inválidas. Tente novamente.')</script>";
@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../css/style.css">
+   <link rel="stylesheet" href="./src/css/style.css">
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
       crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,11 +47,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    <main>
       <header>
          <div class="logo-caixa">
-            <img src="../img/logo.jpg" alt="">
+            <img src="./src/img/logosb.png" alt="">
          </div>
          <div class="btn-cadastro">
             <span>Não tem um Login?</span>
-            <a href="./register.php">Cadastrar</a>
+            <a href="./src/pages/register.php">Cadastrar</a>
          </div>
       </header>
       <div class="container-login-action">
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    
    <section class="info-container">
       <div class="img">
-         <img src="../img/bg-main-removebg-preview.png" alt="">
+         <img src="./src/img/bg-main-removebg-preview.png" alt="">
       </div>
       <div class="text-container">
          <h3>O melhor site de Gerenciamento de Filmes!!</h3>
@@ -179,7 +179,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   </body>
   </html>
 
-   <script src="../js/accordion.js"></script>
+   <script src="./src/js/accordion.js"></script>
 </body>
 
 </html>
