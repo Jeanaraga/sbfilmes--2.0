@@ -1,6 +1,4 @@
-Claro, vamos incorporar o nome do projeto ao README! Aqui está a versão atualizada:
 
----
 
 # 🎬 SB Filmes 2.0 📺
 
