@@ -57,7 +57,7 @@ Este é um projeto escolar do curso técnico de Desenvolvimento de Sistemas, ond
 
 ### 🎓 Contribuidores:
 
-- [Tales](https://github.com/aluno1) 🎓
+- [Tales](https://github.com/nTales129) 🎓
 - [Nome do Aluno 2](https://github.com/aluno2) 📚
 - [Nome do Aluno 3](https://github.com/aluno3) 🖥️
 
